@@ -1,0 +1,3 @@
+INDEX VERSION 1.126+D:\Myspace\.metadata\.plugins\org.eclipse.jdt.core
+189854834.index
+2982648356.index
