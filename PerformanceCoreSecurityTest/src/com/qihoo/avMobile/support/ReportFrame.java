@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.jayway.android.robotium.solo.Solo;
+import com.robotium.solo.Solo;
+
+
 
 import android.annotation.SuppressLint;
 import android.os.Build;
@@ -21,19 +23,20 @@ public class ReportFrame {
 	private static int PassNum = 0;
     private static int FailNum = 0;
     private static String caseHtml = "";
+	public static Date dt = new Date();
+	public static String folderName = getFolderName();
+	public static String folderPath = getFolderPath();
 	
 	@SuppressLint("SimpleDateFormat")
 	public static String CreatCaseReport(String filename) throws IOException{
 		
-		Date dt = new Date();
-		SimpleDateFormat fdate = new SimpleDateFormat("yyyyMMdd");
+
+
 		SimpleDateFormat ftime = new SimpleDateFormat("HHmmss");
-		
-		String folderName = fdate.format(dt); 
+				 
 		String caseName = filename + "_" + ftime.format(dt) + ".html";
-		
-		String sdDir =  getSDPath();
-		String folderPath = sdDir + "/AndroidAutoReport/" + folderName;
+
+		String folderPath = getFolderPath();
 		File folder = new File(folderPath);
 		
 		if(!folder.exists()){
@@ -328,7 +331,7 @@ public class ReportFrame {
 	
 	
 	//获取sd卡初始路径
-	private static String getSDPath(){
+	public  static String getSDPath(){
 		
 		File baseDir = null;
 		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
@@ -336,6 +339,19 @@ public class ReportFrame {
 		}
 		Log.e(PACKAGE_NAME, "SD卡根目录是" + baseDir.toString());
 		return baseDir.toString();	
+	}
+	
+	public static String getFolderPath(){
+		String sdDir =  getSDPath();
+		Log.e("folderName", "---------------------" + folderName);
+		String folderPath = sdDir + "/AndroidAutoReport/" + folderName;
+		return folderPath;
+	}
+	
+	public static String getFolderName(){
+		SimpleDateFormat fdate = new SimpleDateFormat("yyyyMMdd");
+		String fn = fdate.format(dt);
+		return fn;
 	}
 
 }

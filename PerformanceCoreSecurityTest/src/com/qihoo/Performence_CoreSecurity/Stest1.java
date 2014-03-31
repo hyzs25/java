@@ -2,10 +2,15 @@ package com.qihoo.Performence_CoreSecurity;
 
 import org.junit.Test;
 
-import com.jayway.android.robotium.solo.Solo;
+
 import com.qihoo.avMobile.support.PropertiesManager;
 import com.qihoo.avMobile.support.ReportFrame;
+import com.robotium.solo.Solo;
+import com.robotium.solo.Solo.Config;
+import com.robotium.solo.Solo.Config.ScreenshotFileType;
 
+
+import android.os.Environment;
 import android.test.ActivityInstrumentationTestCase2;
 
 
@@ -23,7 +28,7 @@ public class Stest1 extends ActivityInstrumentationTestCase2 {
 	}
 
 	private static Class launcherActivityClass;
-	private static final String PACKAGE_NAME = PropertiesManager.getInstance().getProperty("PACKAGE");
+	private static final String PACKAGE_NAME = "com.qihoo.antivirus";
 	private static final String LAUNCH_ACTIVITY_NAME = "com.qihoo.antivirus.ui.index.AppEnterActivity"; 
 	private Solo solo;
 	
@@ -42,18 +47,25 @@ public class Stest1 extends ActivityInstrumentationTestCase2 {
 
 	public void setUp() throws Exception{
 		super.setUp();
-	    solo = new Solo(getInstrumentation(), getActivity());
+		Config config = new Config();
+		config.timeout_large = 3000;
+		config.screenshotFileType = ScreenshotFileType.PNG;
+		config.screenshotSavePath = ReportFrame.folderPath + "/ScreenCaptrue/";
+	    solo = new Solo(getInstrumentation(), config);
+	    getActivity();
 	    ReportFrame.CreatCaseReport("test");
 	}
 	
 	//测试用例实现
 	@Test
 	public void testCase1() throws Exception {
-		ReportFrame.putsStep("测试点击防通知打扰后进入防通知打扰页");
+		String caseName = "测试点击防通知打扰后进入防通知打扰页";
+		ReportFrame.putsStep(caseName);		
 		solo.sleep(2000);
 		solo.waitForText("防通知打扰");
-		solo.clickOnText("防通知打扰");
-		ReportFrame.writeReport(solo, "测试点击防通知打扰后进入防通知打扰页", solo.searchText("软件通知管理"), true);
+		solo.clickOnText("防通知打扰");		
+		ReportFrame.writeReport(solo, caseName, solo.searchText("软件通知管理"), true);
+		solo.takeScreenshot(caseName);
 	}
 
 	

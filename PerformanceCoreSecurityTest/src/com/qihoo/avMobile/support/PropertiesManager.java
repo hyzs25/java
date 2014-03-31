@@ -7,10 +7,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import android.util.Log;
+
 public class PropertiesManager {
 	
 	public static Properties p;
-	public static File pFile = new File("/resource/config.properties");
+	public static File pFile = new File("D:\\Myspace\\PerformanceCoreSecurityTest\\resource\\config.properties");
 	public static PropertiesManager pt;
 	
 	public static PropertiesManager getInstance(){
@@ -21,7 +23,9 @@ public class PropertiesManager {
 	}
 
 	
-	private void PropertiesManager(){
+	public PropertiesManager(){
+		
+		Log.e("ABSOLUTEPATH", pFile.getPath());
 		
 		FileInputStream  pInputStream = null;
 		try{
