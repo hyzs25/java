@@ -1,0 +1,8 @@
+load D:\compare\old D:\compare\new 
+
+filter "-*.log;-*.MF;-*.RSA;-*.SF"
+criteria binary
+select all.files
+expand all
+
+folder-report layout:side-by-side options:display-mismatches output-to:"D:\compare\MyReport.txt"

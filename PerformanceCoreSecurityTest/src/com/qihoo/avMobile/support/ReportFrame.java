@@ -19,10 +19,10 @@ public class ReportFrame {
 	
 	public static final String  PACKAGE_NAME = "com.qihoo.antivirus";
 	
-	private static int testStep = 0;
-	private static int PassNum = 0;
-    private static int FailNum = 0;
-    private static String caseHtml = "";
+	public static int testStep = 0;
+	public static int PassNum = 0;
+	public static int FailNum = 0;
+    public static String caseHtml = "";
 	public static Date dt = new Date();
 	public static String folderName = getFolderName();
 	public static String folderPath = getFolderPath();
@@ -36,7 +36,6 @@ public class ReportFrame {
 				 
 		String caseName = filename + "_" + ftime.format(dt) + ".html";
 
-		String folderPath = getFolderPath();
 		File folder = new File(folderPath);
 		
 		if(!folder.exists()){
@@ -331,7 +330,7 @@ public class ReportFrame {
 	
 	
 	//获取sd卡初始路径
-	public  static String getSDPath(){
+	public static String getSDPath(){
 		
 		File baseDir = null;
 		if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){

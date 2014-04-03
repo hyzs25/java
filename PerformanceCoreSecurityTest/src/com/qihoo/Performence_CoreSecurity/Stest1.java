@@ -47,6 +47,8 @@ public class Stest1 extends ActivityInstrumentationTestCase2 {
 
 	public void setUp() throws Exception{
 		super.setUp();
+		
+		//robotium 5.0.1以上版本支持
 		Config config = new Config();
 		config.timeout_large = 3000;
 		config.screenshotFileType = ScreenshotFileType.PNG;
