@@ -8,3 +8,4 @@ cd src
 javac -encoding gbk -d .. com\qihoo\filecompare\*.java
 cd ..
 java com.qihoo.filecompare.FileCompare
+pause

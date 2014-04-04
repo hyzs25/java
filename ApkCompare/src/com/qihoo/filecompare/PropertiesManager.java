@@ -47,9 +47,9 @@ public class PropertiesManager {
 	}
 
 
-	public static void main(String[] args) {
-		String pac = PropertiesManager.getInstance().getProperty("PACKAGE");
-		System.out.println(pac);
-	}
+//	public static void main(String[] args) {
+//		String pac = PropertiesManager.getInstance().getProperty("PACKAGE");
+//		System.out.println(pac);
+//	}
 	
 }

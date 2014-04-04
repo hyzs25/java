@@ -235,20 +235,18 @@ public class ToolUtil {
 //            e.printStackTrace();  
 //  
 //        }  
-     
-		ProcessBuilder pb = new ProcessBuilder("BCompare.exe", "@" + PropertiesManager.getInstance().getProperty("BC_SCRIPT_PATH"));   
-        // 让这个进程的工作区空间改为F:\dist   
-        // 这样的话,它就会去F:\dist目录下找Test.jar这个文件   
-        pb.directory(new File(PropertiesManager.getInstance().getProperty("BC_PATH")));   
-        // 得到进程生成器的环境 变量,这个变量我们可以改,   
-        // 改了以后也会反应到新起的进程里面去   
-        Map<String, String> map = pb.environment();   
-        Process p1 = pb.start();   
+		String bcPath = PropertiesManager.getInstance().getProperty("BC_PATH");
+		bcPath = bcPath.endsWith("\\")? bcPath : bcPath + "\\";
+
+		Process p1;
+
+		ProcessBuilder pb = new ProcessBuilder(bcPath + "BCompare.exe", "@" + PropertiesManager.getInstance().getProperty("BC_SCRIPT_PATH"));   
+		pb.directory(new File(bcPath));           
+//      Map<String, String> map = pb.environment(); 
+         p1= pb.start();   
         
         p1.waitFor();
         p1.destroy();
-//         然后就可以对p做自己想做的事情了   
-//         自己这个时候就可以退出了   
 		
 //		String command = "cmd /c start D:\\compare.bat";
 //		try {
@@ -272,11 +270,11 @@ public class ToolUtil {
 //			e.printStackTrace();
 //		}		
 	}
-	
+//	
 //	public static void main(String[] args) throws Exception {
-////		delAllPath("D:\\compare\\new");
-//		unZip("D:\\compare\\MobileAV_1.0.0.1108.zip", "D:\\compare\\old");
-////		runCommend();
+//////		delAllPath("D:\\compare\\new");
+////		unZip("D:\\compare\\MobileAV_1.0.0.1108.zip", "D:\\compare\\old");
+//		runCommend();
 //		System.out.println("成功");
 //	}
 	

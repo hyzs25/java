@@ -35,7 +35,7 @@ public class FileCompare{
 		ToolUtil.unZip(newZipFile, newApkDir);
 
 		ToolUtil.runCommend();
-			
+		System.out.println("正在生成报告................");
 	    ReportFrame.CreatCaseReport(oldApk, newApk, oldSize, newSize);	
 	    
 		ReportFrame.putsStep("新增加的文件列表");	

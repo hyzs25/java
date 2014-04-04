@@ -233,12 +233,12 @@ public class ContentSpy {
 	}
 	
 	
-	public static void main(String[] args) throws IOException{
-		String s = "ds ffds|+g fgd";
-		String[] aStrings = transArray(s);
-		for(String c:aStrings){
-			System.out.println(c);
-		}
-		
-	}
+//	public static void main(String[] args) throws IOException{
+////		String s = "ds ffds|+g fgd";
+////		String[] aStrings = transArray(s);
+////		for(String c:aStrings){
+////			System.out.println(c);
+////		}
+////		
+//	}
 }

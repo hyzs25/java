@@ -262,6 +262,7 @@ public class ReportFrame {
 	        FileWriter closeWrite = new FileWriter(repotHtml, true);
 	        closeWrite.append(closeContent);//写入Html
 	        closeWrite.close();
+	        System.out.println("报告生成完毕......................");
 	        System.out.println("Everything is OK!!!!-----------------------------------------------------");
         }catch(IOException e) {
  		   e.printStackTrace();
